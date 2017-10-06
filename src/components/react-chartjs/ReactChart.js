@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Chart from 'chart.js'
 
-import { material } from './themes'
-
 class ReactChart extends Component {
   componentDidMount () {
     const data = {
       labels: this.props.labels,
-      datasets: this.props.datasets.map((dataset) => {
-        return {...dataset, backgroundColor: material}
-      })
+      datasets: this.props.datasets
     }
 
     const defaultOptions = {
@@ -22,7 +18,8 @@ class ReactChart extends Component {
     const config = {
       type: this.props.type,
       data,
-      options
+      options,
+      ...this.props.root
     }
 
     const chart = new Chart(this.canvas.getContext('2d'), config)
@@ -45,7 +42,6 @@ class ReactChart extends Component {
 
 ReactChart.propTypes = {
   type: PropTypes.string.isRequired,
-  colors: PropTypes.object,
   labels: PropTypes.array,
   dataSets: PropTypes.array,
   options: PropTypes.object

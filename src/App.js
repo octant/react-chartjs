@@ -1,79 +1,61 @@
 import React, { Component } from 'react'
 
-import ReactChartjs from './components/ReactChart.js'
+import ReactChartjs from './components/react-chartjs'
+import {
+  bar,
+  bubble,
+  combo,
+  doughnut,
+  line,
+  pie,
+  polarArea,
+  radar
+} from './charts'
 
 class App extends Component {
-  dataset (n, min = 0, max = 100) {
-    const data = []
-
-    for (let i = 0; i < n; ++i) {
-      data.push(Math.floor(Math.random() * 50))
-    }
-    return data
-  }
   render () {
-    const labels = ['Red', 'Pink', 'Purple', 'Deep Purple', 'Indigo', 'Blue', 'Light Blue']
-    const barDatasets = [{
-      label: 'Material Colors',
-      data: this.dataset(labels.length)
-    }]
-
-    const lineDatasets = [{
-      label: 'My First dataset',
-      borderColor: 'blue',
-      data: this.dataset(7),
-      fill: false
-    },
-    {
-      label: 'My Second dataset',
-      fill: false,
-      borderColor: 'red',
-      data: this.dataset(7)
-    }]
-
-    const lineOptions = {
-      responsive: true,
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart'
-      },
-      tooltips: {
-        mode: 'index',
-        intersect: false
-      },
-      hover: {
-        mode: 'nearest',
-        intersect: true
-      },
-      scales: {
-        xAxes: [{
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Month'
-          }
-        }],
-        yAxes: [{
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Value'
-          }
-        }]
-      }
-    }
     return (
       <div className='App'>
         <ReactChartjs
           type='bar'
-          labels={labels}
-          datasets={barDatasets}
-          options={{title: { display: true, text: 'Chart.js Bar Chart' }}} />
+          labels={bar.labels}
+          datasets={bar.datasets}
+          options={bar.options} />
         <ReactChartjs
           type='line'
-          labels={['January', 'February', 'March', 'April', 'May', 'June', 'July']}
-          datasets={lineDatasets}
-          options={lineOptions} />
+          labels={line.labels}
+          datasets={line.datasets}
+          options={line.options} />
+        <ReactChartjs
+          type='bubble'
+          labels={bubble.labels}
+          datasets={bubble.datasets}
+          options={bubble.options} />
+        <ReactChartjs
+          type='bar'
+          labels={combo.labels}
+          datasets={combo.datasets}
+          options={combo.options} />
+        <ReactChartjs
+          type='doughnut'
+          labels={doughnut.labels}
+          datasets={doughnut.datasets}
+          options={doughnut.options} />
+        <ReactChartjs
+          type='pie'
+          labels={pie.labels}
+          datasets={pie.datasets}
+          options={pie.options} />
+        <ReactChartjs
+          type='polarArea'
+          labels={polarArea.labels}
+          datasets={polarArea.datasets}
+          options={polarArea.options} />
+        <ReactChartjs
+          type='radar'
+          labels={radar.labels}
+          datasets={radar.datasets}
+          options={radar.options} />
       </div>
     )
   }
