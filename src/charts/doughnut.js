@@ -1,13 +1,16 @@
 import { dataset } from './utils'
 import { material } from '../components/react-chartjs'
 
-const chart = {
-  labels: ['Red', 'Pink', 'Purple', 'Deep Purple', 'Indigo', 'Blue', 'Light Blue'],
-  datasets: [{
-    label: 'Material Colors',
-    data: dataset(7),
-    backgroundColor: material
-  }],
+const config = {
+  type: 'doughnut',
+  data: {
+    labels: ['Red', 'Pink', 'Purple', 'Deep Purple', 'Indigo', 'Blue', 'Light Blue'],
+    datasets: [{
+      label: 'Material Colors',
+      data: dataset(7),
+      backgroundColor: material
+    }]
+  },
   options: {
     title: {
       display: true,
@@ -16,4 +19,4 @@ const chart = {
   }
 }
 
-export default chart
+export default config

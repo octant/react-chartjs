@@ -4,25 +4,28 @@ import Chart from 'chart.js'
 
 class ReactChart extends Component {
   componentDidMount () {
-    const data = {
-      labels: this.props.labels,
-      datasets: this.props.datasets
-    }
+<<<<<<< HEAD
+=======
+    // const data = {
+    //   labels: this.props.labels,
+    //   datasets: this.props.datasets
+    // }
 
-    const defaultOptions = {
-      responsive: true
-    }
+    // const defaultOptions = {
+    //   responsive: true
+    // }
 
-    const options = {...defaultOptions, ...this.props.options || {}}
+    // const options = {...defaultOptions, ...this.props.options || {}}
 
-    const config = {
-      type: this.props.type,
-      data,
-      options,
-      ...this.props.root
-    }
+    // const config = {
+    //   type: this.props.type,
+    //   data,
+    //   options,
+    //   ...this.props.root
+    // }
 
-    const chart = new Chart(this.canvas.getContext('2d'), config)
+>>>>>>> 369b57a1190fc52ec769245d59dcbcf0e882858a
+    const chart = new Chart(this.canvas.getContext('2d'), this.props.config)
 
     this.setState({
       chart
@@ -41,10 +44,7 @@ class ReactChart extends Component {
 }
 
 ReactChart.propTypes = {
-  type: PropTypes.string.isRequired,
-  labels: PropTypes.array,
-  dataSets: PropTypes.array,
-  options: PropTypes.object
+  config: PropTypes.object.isRequired
 }
 
 export default ReactChart
